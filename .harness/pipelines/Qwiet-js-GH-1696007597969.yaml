@@ -36,9 +36,34 @@ pipeline:
                   timeout: ""
                   type: Plugin
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Cloud
+            spec: {}
         type: CI
+    - stage:
+        name: Qwiet preZero Analysis
+        identifier: Qwiet_preZero_Analysis
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |
+                          curl https://cdn.shiftleft.io/download/sl >/usr/local/bin/sl && chmod a+rx /usr/local/bin/sl
+                          sl analyze --app Harness_Test
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
