@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_Qwiet_js_GH_1696007603542-pr-trigger-input-set
+  identifier: Build_Qwiet_js_GH_1696007603542prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: QwietjsHarn
+  pipeline:
+    identifier: Build_Qwiet_js_GH_1696007603542
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
