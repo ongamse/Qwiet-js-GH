@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_Qwiet_js_GH_1696007603542-push-trigger-input-set
+  identifier: Build_Qwiet_js_GH_1696007603542pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: QwietjsHarn
+  pipeline:
+    identifier: Build_Qwiet_js_GH_1696007603542
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
