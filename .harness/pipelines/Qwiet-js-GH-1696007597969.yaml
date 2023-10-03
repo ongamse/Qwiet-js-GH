@@ -58,31 +58,42 @@ pipeline:
             spec: {}
         type: CI
     - stage:
-        name: Qwiet
-        identifier: Qwiet
+        name: Qwiet Analysis
+        identifier: Qwiet_Analysis
         description: ""
         type: Custom
         spec:
           execution:
             steps:
-              - step:
-                  type: ShellScript
-                  name: preZero
-                  identifier: preZero
-                  spec:
-                    shell: Bash
-                    onDelegate: true
-                    source:
-                      type: Inline
-                      spec:
-                        script: |-
-                          #QwietToken
-                          echo "project var: " <+variable.proj_var>
-                          #Download Qwiet
-                          curl https://cdn.shiftleft.io/download/sl >/usr/local/bin/sl && chmod a+rx /usr/local/bin/sl
-                          #Run Qwiet
-                          sl analyze --app TestHarness --js .
-                    environmentVariables: []
-                    outputVariables: []
-                  timeout: 10m
+              - stepGroup:
+                  name: QwietAnalysis
+                  identifier: QwietAnalysis
+                  steps:
+                    - step:
+                        type: ShellScriptProvision
+                        name: preZero
+                        identifier: preZero
+                        spec:
+                          source:
+                            type: Inline
+                            spec:
+                              script: |-
+                                #QwietToken
+                                echo "project var: " <+variable.proj_var>
+                                #Download Qwiet
+                                curl https://cdn.shiftleft.io/download/sl >/usr/local/bin/sl && chmod a+rx /usr/local/bin/sl
+                                #Run Qwiet
+                                sl analyze --app TestHarness --js .
+                          environmentVariables: []
+                          delegateSelectors:
+                            - dockerdelegate
+                        timeout: 10m
+                        failureStrategies:
+                          - onFailure:
+                              errors:
+                                - AllErrors
+                              action:
+                                type: MarkAsFailure
+            rollbackSteps: []
+          serviceDependencies: []
         tags: {}
