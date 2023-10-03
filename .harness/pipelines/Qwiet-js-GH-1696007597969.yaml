@@ -18,16 +18,10 @@ pipeline:
           execution:
             steps:
               - step:
-                  identifier: npminstall
-                  name: npm_install
-                  spec:
-                    command: npm install
-                  timeout: ""
-                  type: Run
-              - step:
                   identifier: dockerbuild
                   name: docker_build
                   spec:
+                    connectorRef: account.harnessImage
                     image: plugins/docker
                     settings:
                       dry_run: "true"
@@ -35,6 +29,27 @@ pipeline:
                       tags: latest
                   timeout: ""
                   type: Plugin
+              - step:
+                  identifier: npminstall
+                  name: npm_install
+                  spec:
+                    shell: Sh
+                    command: |-
+                      npm install
+                      npm build
+                  timeout: ""
+                  type: Run
+              - step:
+                  type: Run
+                  name: Qwiet
+                  identifier: Qwiet
+                  spec:
+                    shell: Sh
+                    command: |-
+                      #Download Qwiet
+                      curl https://cdn.shiftleft.io/download/sl >/usr/local/bin/sl && chmod a+rx /usr/local/bin/sl
+                      #Run Qwiet
+                      sl analyze --app TestHarness --js .
           platform:
             os: Linux
             arch: Amd64
@@ -42,30 +57,3 @@ pipeline:
             type: Cloud
             spec: {}
         type: CI
-    - stage:
-        name: Qwiet preZero Analysis
-        identifier: Qwiet_preZero_Analysis
-        description: ""
-        type: Custom
-        spec:
-          execution:
-            steps:
-              - step:
-                  type: ShellScript
-                  name: ShellScript_1
-                  identifier: ShellScript_1
-                  spec:
-                    shell: Bash
-                    onDelegate: true
-                    source:
-                      type: Inline
-                      spec:
-                        script: |
-                          curl https://cdn.shiftleft.io/download/sl >/usr/local/bin/sl && chmod a+rx /usr/local/bin/sl
-                          sl analyze --app Harness_Test
-                    environmentVariables: []
-                    outputVariables: []
-                    delegateSelectors:
-                      - dockerdelegate
-                  timeout: 10m
-        tags: {}
