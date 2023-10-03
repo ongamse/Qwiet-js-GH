@@ -65,5 +65,7 @@ pipeline:
                           sl analyze --app Harness_Test
                     environmentVariables: []
                     outputVariables: []
+                    delegateSelectors:
+                      - dockerdelegate
                   timeout: 10m
         tags: {}
