@@ -49,7 +49,7 @@ pipeline:
                       #Download Qwiet
                       curl https://cdn.shiftleft.io/download/sl >/usr/local/bin/sl && chmod a+rx /usr/local/bin/sl
                       #Run Qwiet
-                      sl analyze --app Qwiet-js-Harness
+                      sl analyze --app Qwiet-js-Harness --js .
                     envVariables:
                       SHIFTLEFT_ACCESS_TOKEN: eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njg1NTE1MzksImlzcyI6IlNoaWZ0TGVmdCIsIm9yZ0lEIjoiMzc4NDViODQtMGYyYi00ZmZkLWIxNjAtNDEzNTFkODBjMjFkIiwidXNlcklEIjoiOTQ4Mjc4ZmUtODA2YS00YWU0LWFiNDQtMzRhNzZmMjgzMDEyIiwic2NvcGVzIjpbInNlYXRzOndyaXRlIiwiZXh0ZW5kZWQiLCJhcGk6djIiLCJ1cGxvYWRzOndyaXRlIiwibG9nOndyaXRlIiwicGlwZWxpbmVzdGF0dXM6cmVhZCIsIm1ldHJpY3M6d3JpdGUiLCJwb2xpY2llczpjdXN0b21lciIsInBvbGljaWVzOnJlYWQiXX0.NhoUPyh8SBUWC0hemSrlp4prTLe8OSTICTc1r69wTk27xeu7AqkurkJ7yyGfdUH_hdFLTlGIZR9CyyCSrgWVXSCds8zPRE8Qk8mq_5cBdBpX9NM3O3RLNOp6VVchGI6dFX1QyMf2LoajzCZDdCvfssgJdej9ILXX_fBgIuG9svfMOEUMSeaamM1Q7hK6PD0b1oWG0Xn6isZ9Mf_IVvUsYeSAEJxKT8NSWh0zPqUgw-7GOwW3bQOSh23RcfIxGKmFqXhmkGzl_ttFT-fPeNJKipW3JP_Vr0LM389Tk7UwrTsMIGFMJC7mpxFcoAPG6kCpjHi_NfOYr4cxRJdbNznuIA
           platform:
