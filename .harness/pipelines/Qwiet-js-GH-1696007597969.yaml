@@ -34,9 +34,7 @@ pipeline:
                   name: npm_install
                   spec:
                     shell: Sh
-                    command: |-
-                      npm install
-                      npm build
+                    command: npm install
                   timeout: ""
                   type: Run
               - step:
