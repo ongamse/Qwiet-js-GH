@@ -1,0 +1,14 @@
+inputSet:
+  pipeline:
+    identifier: Build_Qwiet_js_GH_1696007603542
+    properties:
+      ci:
+        codebase:
+          build:
+            spec:
+              branch: master
+            type: branch
+  name: Default
+  identifier: Default
+  orgIdentifier: default
+  projectIdentifier: QwietjsHarn
