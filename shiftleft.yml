@@ -4,12 +4,13 @@ build_rules:
     severities:
       - critical
       - high
+    threshold: 0
   - id: Allow one OSS or container finding
     finding_types:
       - oss_vuln
       - container
     threshold: 1
-  - id: Allow no unreachable OSS vulnerability
+  - id: Allow no OSS vulnerability
     finding_types:
       - oss_vuln
     options:
