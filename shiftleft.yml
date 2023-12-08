@@ -13,4 +13,3 @@ build_rules:
       - oss_vuln
     options:
       reachable: false
-      unreachable: true
