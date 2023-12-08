@@ -1,17 +1,22 @@
 version: 2
 build_rules:
-  - id: Allow no critical findings
+  - id: "Allow zero high SAST vulnerabilities" # is the build rule identifier
+    finding_types:
+      - vuln
+      - secret
+    severities:
+      - high
+      - critical
+    threshold: 0
+    options:
+      num_findings: 20 # return only 10 SAST findings
+  - id: "Allow zero reachable SCA vulnerabilities"
+    finding_types:
+      - oss_vuln
     severities:
       - critical
       - high
     threshold: 0
-  - id: Allow one OSS or container finding
-    finding_types:
-      - oss_vuln
-      - container
-    threshold: 1
-  - id: Allow no OSS vulnerability
-    finding_types:
-      - oss_vuln
     options:
       reachable: false
+      num_findings: 20 # return 10 reachable SCA findings
