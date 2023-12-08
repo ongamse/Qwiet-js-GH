@@ -5,6 +5,8 @@ build_rules:
       - critical
       - high
     threshold: 0
+    options:
+      num_findings: 10
   - id: Allow one OSS or container finding
     finding_types:
       - oss_vuln
@@ -15,3 +17,5 @@ build_rules:
       - oss_vuln
     options:
       reachable: false
+      options:
+      num_findings: 10
