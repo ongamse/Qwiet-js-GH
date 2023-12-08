@@ -3,6 +3,7 @@ build_rules:
   - id: Allow no critical findings
     severities:
       - critical
+      - high
   - id: Allow one OSS or container finding
     finding_types:
       - oss_vuln
