@@ -10,8 +10,12 @@ build_rules:
       - oss_vuln
       - container
     threshold: 1
-  - id: Allow no OSS vulnerability
+    options:
+      reachable: false
+      num_findings: 20 
+  - id: Allow no unreachable OSS vulnerability
     finding_types:
       - oss_vuln
     options:
       reachable: false
+      num_findings: 20 
